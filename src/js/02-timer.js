@@ -24,13 +24,23 @@ const refs = {
     label: document.querySelector('.label'),
 };
 
+// const field = document.querySelectorAll('.field')
+
+// console.log(field);
+
 refs.timer.style.display ="flex";
 refs.timer.style.gap ="25px";
 
-refs.field.style.display ="flex";
-refs.field.style.flexDirection ="column";
-refs.field.style.alignItems ="center";
-refs.field.style.gap ="10px";
+// const styleField = field.map((element) => {
+//   console.log(element)
+// }
+  
+//   // element.style.display ="flex",
+//   // element.style.flexDirection ="column",
+//   // element.style.alignItems ="center",
+//   // element.style.gap ="10px",
+
+//   );
 
 
   function convertMs(ms) {

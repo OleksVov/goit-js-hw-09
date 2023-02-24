@@ -28,26 +28,7 @@ const refs = {
     label: document.querySelectorAll('.label'),
 };
 
-// const field = document.querySelectorAll('.field')
 
-
-refs.timer.style.display ="flex";
-refs.timer.style.gap ="25px";
-
-  for (let i = 0; i < 4; i+= 1) {
-refs.field[i].style.display ="flex";
-refs.field[i].style.flexDirection ="column";
-refs.field[i].style.alignItems ="center";
-refs.field[i].style.gap ="10px";
-refs.value[i].style
-  };
-  // .value {
-  //   font-size: 40px;
-  // }
-  // .label {
-  //   text-transform: uppercase;
-  //   font-size: 15px;
-  // }
 
   function convertMs(ms) {
     // Number of milliseconds per unit of time

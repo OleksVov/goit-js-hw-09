@@ -24,8 +24,8 @@ const refs = {
     seconds: document.querySelector('[data-seconds]'),
     timer: document.querySelector('.timer'),
     field: document.querySelectorAll('.field'),
-    value: document.querySelector('.value'),
-    label: document.querySelector('.label'),
+    value: document.querySelectorAll('.value'),
+    label: document.querySelectorAll('.label'),
 };
 
 // const field = document.querySelectorAll('.field')
@@ -34,25 +34,20 @@ const refs = {
 refs.timer.style.display ="flex";
 refs.timer.style.gap ="25px";
 
-const styleField = refs.field[0];
-console.log(styleField);
-// styleField.map((element) => {
-//   console.log(element)
-// });
-  
-// styleField.style.display ="flex",
-// styleField.style.flexDirection ="column",
-// styleField.style.alignItems ="center",
-// styleField.style.gap ="10px",
-
-  // styleField.style = {
-  //   display: 'flex',
-  // flexDirection: "column",
-  // alignItems: "center",
-  // gap: "10px",
+  for (let i = 0; i < 4; i+= 1) {
+refs.field[i].style.display ="flex";
+refs.field[i].style.flexDirection ="column";
+refs.field[i].style.alignItems ="center";
+refs.field[i].style.gap ="10px";
+refs.value[i].style
+  };
+  // .value {
+  //   font-size: 40px;
   // }
-
-
+  // .label {
+  //   text-transform: uppercase;
+  //   font-size: 15px;
+  // }
 
   function convertMs(ms) {
     // Number of milliseconds per unit of time

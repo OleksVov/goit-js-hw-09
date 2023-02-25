@@ -1,6 +1,8 @@
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 
+import Notiflix from 'notiflix';
+
 
 const options = {
     enableTime: true,
@@ -9,7 +11,7 @@ const options = {
     minuteIncrement: 1,
     onClose(selectedDates) {
 
-      selectedDates[0].getTime() <= Date.now() ? window.alert("Please choose a date in the future") : refs.start.removeAttribute('disabled');
+      selectedDates[0].getTime() <= Date.now() ? Notiflix.Notify.failure('Please choose a date in the future') : refs.start.removeAttribute('disabled');
 
     },
   };
@@ -22,9 +24,8 @@ const refs = {
     minutes: document.querySelector('[data-minutes]'),
     seconds: document.querySelector('[data-seconds]'),
     timer: document.querySelector('.timer'),
-    field: document.querySelectorAll('.field'),
     value: document.querySelectorAll('.value'),
-    label: document.querySelectorAll('.label'),
+   
 };
 
   function convertMs(ms) {
@@ -66,6 +67,7 @@ const refs = {
        const timeComponents = convertMs(differenceTime);
        updateClockFace(timeComponents);
        if(differenceTime <= 0) {
+        Notiflix.Notify.success('The countdown is over');
         clearInterval(this.intervalId);
         refs.value[0].textContent = '00';
         refs.value[1].textContent = '00';

@@ -14,7 +14,6 @@ const options = {
     },
   };
 
-
 const refs = {
     start: document.querySelector('[data-start]'),
     input: document.querySelector('#datetime-picker'),
@@ -27,8 +26,6 @@ const refs = {
     value: document.querySelectorAll('.value'),
     label: document.querySelectorAll('.label'),
 };
-
-
 
   function convertMs(ms) {
     // Number of milliseconds per unit of time
@@ -57,25 +54,34 @@ const refs = {
 
 
   const timer = {
+    intervalId: null,
+
     start() {
       const startTime = new Date(refs.input.value).getTime();
       refs.start.setAttribute('disabled', 'disabled');
 
-      setInterval(() => {
+      this.intervalId = setInterval(() => {
        const currentTime = Date.now();
        const differenceTime = startTime - currentTime;
        const timeComponents = convertMs(differenceTime);
        updateClockFace(timeComponents);
-       
+       if(differenceTime <= 0) {
+        clearInterval(this.intervalId);
+        refs.value[0].textContent = '00';
+        refs.value[1].textContent = '00';
+        refs.value[2].textContent = '00';
+        refs.value[3].textContent = '00';
+       }
       }, 1000);
-    }
+    },
   };
-  // timer.start();
 
   function addLeadingZero(value) {
     return String(value).padStart(2, '0');
   }
-refs.start.setAttribute('disabled', 'disabled')  
+
+refs.start.setAttribute('disabled', 'disabled') 
+
 refs.start.addEventListener('click', () => {
    timer.start();
 } );
@@ -85,6 +91,6 @@ refs.start.addEventListener('click', () => {
     refs.hours.textContent = `${hours}`;
     refs.minutes.textContent = `${minutes}`;
     refs.seconds.textContent = `${seconds}`;
+
   }
 
-// console.log(new Date(refs.input.value).getTime());

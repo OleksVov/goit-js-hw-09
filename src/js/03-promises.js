@@ -5,14 +5,18 @@ const refs = {
   delay: document.querySelector('[name="delay"]'),
   step: document.querySelector('[name="step"]'),
   amount: document.querySelector('[name="amount"]'),
+  button: document.querySelector('button'),
 }
-
 
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
 
     setTimeout(() => {
-      const shouldResolve = Math.random() > 0.3;
+      const shouldResolve = Math.random() > 0.5;
+      refs.button.removeAttribute('disabled');
+      refs.delay.value = "";
+      refs.step.value = "";
+      refs.amount.value = "";
 
       if (shouldResolve) {
         resolve({position, delay});
@@ -20,12 +24,15 @@ function createPromise(position, delay) {
         reject({position, delay});
       }
     },delay);
+    
   });
 }
 
 
 refs.form.addEventListener('submit', event => {
   event.preventDefault();
+  refs.button.setAttribute('disabled', 'disabled');
+
   const delayInput = Number(refs.delay.value);
   const step = Number(refs.step.value);
   const amount = Number(refs.amount.value);

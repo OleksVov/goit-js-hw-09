@@ -68,12 +68,13 @@ const refs = {
        updateClockFace(timeComponents);
       
        if(differenceTime <= 0) {
-        Notiflix.Notify.success('The countdown is over');
+        Notiflix.Report.success('HELLO', 'The countdown is over', 'Finished');
+        // Notiflix.Notify.success('The countdown is over');
         clearInterval(this.intervalId);
-        refs.value[0].textContent = '00';
-        refs.value[1].textContent = '00';
-        refs.value[2].textContent = '00';
-        refs.value[3].textContent = '00';
+
+        for (let i = 0; i < refs.value.length; i += 1) {
+          refs.value[i].textContent = '00';
+        };
        }
       }, 1000);
     },
@@ -94,6 +95,5 @@ refs.start.addEventListener('click', () => {
     refs.hours.textContent = `${hours}`;
     refs.minutes.textContent = `${minutes}`;
     refs.seconds.textContent = `${seconds}`;
-
-  }
+  };
 

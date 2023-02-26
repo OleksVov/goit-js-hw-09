@@ -66,6 +66,7 @@ const refs = {
        const differenceTime = startTime - currentTime;
        const timeComponents = convertMs(differenceTime);
        updateClockFace(timeComponents);
+      
        if(differenceTime <= 0) {
         Notiflix.Notify.success('The countdown is over');
         clearInterval(this.intervalId);
